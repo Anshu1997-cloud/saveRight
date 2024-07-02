@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Flow</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div id="loader" class="d-none">
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <div id="login-step-1" class="login-step">
+            <h2>Enter Your Phone Number</h2>
+            <form id="phone-form">
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" class="form-control" id="phone" placeholder="+91 1234567890" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Request OTP</button>
+            </form>
+        </div>
+        <div id="login-step-2" class="login-step d-none">
+            <h2>Enter OTP</h2>
+            <form id="otp-form">
+                <div class="form-group">
+                    <label for="otp">OTP</label>
+                    <div class="otp-input-container">
+                        <input type="text" class="form-control otp-input" maxlength="1" required placeholder="1">
+                        <input type="text" class="form-control otp-input" maxlength="1" required placeholder="2">
+                        <input type="text" class="form-control otp-input" maxlength="1" required placeholder="3">
+                        <input type="text" class="form-control otp-input" maxlength="1" required placeholder="4">
+                        <input type="text" class="form-control otp-input" maxlength="1" required placeholder="5">
+                        <input type="text" class="form-control otp-input" maxlength="1" required placeholder="6">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Verify OTP</button>
+            </form>
+        </div>
+        <div id="welcome-page" class="d-none">
+            <h2>Welcome</h2>
+            <p>You have successfully logged in!</p>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
+</body>
+</html>

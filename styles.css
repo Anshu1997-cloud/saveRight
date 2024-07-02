@@ -1,0 +1,118 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+}
+
+.login-step {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.login-step h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-control {
+    height: 45px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #6B73FF;
+    box-shadow: 0 0 5px rgba(107, 115, 255, 0.5);
+}
+
+.btn {
+    width: 100%;
+    height: 45px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background: #6B73FF;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background: #5a62e6;
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    background: #4f57d2;
+    transform: translateY(0);
+}
+
+#loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+#loader .spinner-border {
+    width: 4rem;
+    height: 4rem;
+}
+.otp-input-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.otp-input {
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    font-size: 18px;
+    margin-right: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+.otp-input:last-child {
+    margin-right: 0;
+}
+
+.otp-input:focus {
+    border-color: #6B73FF;
+    box-shadow: 0 0 5px rgba(107, 115, 255, 0.5);
+}
+
+.d-none {
+    display: none !important;
+}

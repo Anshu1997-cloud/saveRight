@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const phoneInput = document.getElementById('phone');
             const phoneNumber = phoneInput ? phoneInput.value : '';
-            if (/^\+91\d{10}$/.test(phoneNumber)) {
+            if (/^\d{10}$/.test(phoneNumber)) {
                 loader.classList.remove('d-none');
                 setTimeout(() => {
                     loader.classList.add('d-none');
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'Please enter a valid phone number!',
+                    text: 'Please enter a valid 10-digit phone number!',
                 });
             }
         });

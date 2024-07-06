@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const phoneForm = document.getElementById('phone-form');
     const otpForm = document.getElementById('otp-form');
@@ -7,11 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const welcomePage = document.getElementById('welcome-page');
     const otpInputs = document.querySelectorAll('.otp-input');
 
+    let phoneNumber = "";
+    let generatedOtp = ""; 
+
     if (phoneForm) {
         phoneForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const phoneInput = document.getElementById('phone');
-            const phoneNumber = phoneInput ? phoneInput.value : '';
+            phoneNumber = phoneInput ? phoneInput.value : '';
             if (/^\d{10}$/.test(phoneNumber)) {
                 loader.classList.remove('d-none');
                 setTimeout(() => {
@@ -19,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     loginStep1.classList.add('d-none');
                     loginStep2.classList.remove('d-none');
                 }, 1000);
+
+                generateOtp(phoneNumber); 
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -26,6 +32,39 @@ document.addEventListener('DOMContentLoaded', () => {
                     text: 'Please enter a valid 10-digit phone number!',
                 });
             }
+        });
+    }
+
+    function generateOtp(phoneNumber) {
+        generatedOtp = Math.floor(100000 + Math.random() * 900000).toString(); 
+        console.log("Generated OTP:", generatedOtp); 
+
+        const url = "https://saveright.in/auth/signup";
+        const headers = {
+            "Content-Type": "application/json"
+        };
+        const data = {
+            "isdCode": "+91",
+            "phone": phoneNumber,
+            "otp": generatedOtp 
+        };
+
+        fetch(url, {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error occurs: ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("OTP sent successfully:", data);
+        })
+        .catch(error => {
+            console.error("Failed to send OTP:", error);
         });
     }
 
@@ -37,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 loader.classList.remove('d-none');
                 setTimeout(() => {
                     loader.classList.add('d-none');
-                    const isOtpValid = otp === '123456'; 
+                    const isOtpValid = otp === generatedOtp; 
                     if (isOtpValid) {
                         loginStep2.classList.add('d-none');
                         welcomePage.classList.remove('d-none');
